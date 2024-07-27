@@ -6,6 +6,7 @@
     color: white;
     background-color: black;
     justify-content: space-between;
+    align-items: center;
 }
 
 .title {
@@ -25,10 +26,12 @@
 .new-game,
 .race-start {
     width: 100px;
-    border: solid 1px white;
+    border-radius: 10px;
     padding: 5px;
     color: white;
-    background-color: black;
+    background-color: purple;
+    margin-right: 10px;
+    border: none;
 }
 
 .new-game:hover,
@@ -52,6 +55,7 @@
 .betting-amount {
     color: black;
     height: 25px;
+    padding: 5px;
 }
 
 .betting-amount:focus {
