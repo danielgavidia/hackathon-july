@@ -31,7 +31,7 @@ const Navbar: React.FC<NavbarProps> = ({ onStartRace, onNewGameData }) => {
         <div className="balance-amount">$100</div>
         <div className="betting">Bet:</div>
         <div className="betting-amount">$20</div>
-        <button className="race-start" onClick={() => onStartRace()}>
+        <button className="race-start" onClick={onStartRace}>
           Start
         </button>
       </div>
