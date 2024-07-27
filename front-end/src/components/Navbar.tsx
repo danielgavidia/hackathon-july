@@ -19,6 +19,11 @@ const Navbar = () => {
                 <button className="new-game" onClick={() => handleNewGame()}>
                     New Game
                 </button>
+                <div className="balance">Balance</div>
+                <div className="balance-amount">$100</div>
+                <div className="betting">Bet:</div>
+                <input className="betting-amount" type="number" />
+                <button className="race-start">Start</button>
             </div>
         </div>
     );
