@@ -9,12 +9,6 @@
     align-items: center;
 }
 
-.title {
-    flex-grow: 1;
-    /* width: 200px; */
-    padding: 5px;
-}
-
 .functionality {
     flex-grow: 1;
     /* width: 700px; */
@@ -24,7 +18,7 @@
     align-items: center;
 }
 
-.new-game {
+.race-start {
     width: 100px;
     padding: 5px;
     color: white;
@@ -35,6 +29,30 @@
     margin-right: 10px;
 }
 
-.new-game:hover {
+.race-start:hover {
     background-color: blueviolet;
+}
+
+.balance,
+.balance-amount,
+.betting,
+.betting-amount {
+    border: 1px solid white;
+    width: 100px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    display: flex;
+    margin-right: 10px;
+}
+
+.betting-amount {
+    color: black;
+    height: 25px;
+}
+
+.betting-amount:focus {
+    border: none;
+    box-shadow: none;
+    outline: none;
 }
