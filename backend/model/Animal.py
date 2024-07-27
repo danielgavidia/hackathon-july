@@ -50,6 +50,7 @@ class Animal:
             self.consistency * weights['consistency'] +
             self.experience * weights['experience']
         )
+        performance_score *= random.uniform(0.8, 1.2)
 
         return performance_score
 

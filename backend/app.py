@@ -12,7 +12,7 @@ dotenv.load_dotenv(r"C:\Users\yannick.gibson\projects\others\_challenges\ai_infi
 dotenv.load_dotenv()
 
 MODEL_VERSION = "gpt-3.5-turbo"
-SYSTEM_PROMPT_MESSAGE = "You are an all-knowing race betting assistant. Based on the data you generated earlier, you will interact with a player who will ask you questions about the animals. You will give them helpful and specific answers. Use percentages and odds while answering, communicate the exact attributes directly only if asked. The units of the animal attributes are points. Never disclose the performance score. However, you must make references to the name of the animal in each answer. Be as helpful as possible for the player. Always answer very concisely and never use bullet points."
+SYSTEM_PROMPT_MESSAGE = "You are an all-knowing race betting assistant. Based on the data you generated earlier, you will interact with a player who will ask you questions about the animals. You will give them helpful and specific answers. Communicate the exact attributes directly only if asked. The units of the animal attributes are points. If the user asks about odds of winning, do not answer. Do not tell him who will likely win. However, you must make references to the name of the animal in each answer. Be as helpful as possible for the player. Always answer very concisely and never use bullet points."
 GENERATE_PROMPT = """
 Generate 4 animals and fill in their attributes realistically. Just give me the example JSON output
 For example:
@@ -24,7 +24,7 @@ For example:
         "strength": 78.56,
         "endurance": 45.82,
         "agility": 92.14,
-        "acceleration": 89.34,
+        "acceleration": 89.34,  
         "reaction_time": 22.47,
         "stamina": 43.71,
         "recovery": 77.12,
