@@ -2,7 +2,10 @@ import random
 
 
 class Animal:
-    def __init__(self, name, speed, strength, endurance, agility, acceleration, reaction_time, stamina, recovery, focus, consistency, experience):
+    def __init__(
+            self, 
+            name:str, 
+            speed:float, strength, endurance, agility, acceleration, reaction_time, stamina, recovery, focus, consistency, experience):
         self.name = str(name)
         self.speed = float(speed)
         self.strength = float(strength)
