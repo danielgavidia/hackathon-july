@@ -1,5 +1,3 @@
-// src/components/RaceComponent.tsx
-
 import React, { useState, useEffect } from "react";
 import "../styles/RaceComponent.css";
 
@@ -42,18 +40,24 @@ const RaceComponent: React.FC<RaceComponentProps> = ({
 
     if (startRace && animals.length > 0) {
       console.log("Starting the race interval");
+
       const interval = setInterval(() => {
         setPositions((prevPositions) => {
+          console.log("Previous positions:", prevPositions);
+
           const newPositions = prevPositions.map((pos, index) => {
             const newPos = pos + calculateSpeed(animals[index]);
             console.log(`Animal ${index} new position:`, newPos);
+
             if (newPos >= maxDistance && !winner) {
               console.log(`Winner found: ${animals[index].name}`);
               setWinner(animals[index].name);
             }
+
             return newPos >= maxDistance ? maxDistance : newPos;
           });
 
+          console.log("Updated positions:", newPositions); // Log new positions
           return newPositions;
         });
       }, 500);
@@ -63,7 +67,7 @@ const RaceComponent: React.FC<RaceComponentProps> = ({
         clearInterval(interval);
       };
     }
-  }, [startRace, animals, maxDistance, winner, positions]);
+  }, [startRace, animals, maxDistance, winner]);
 
   const calculateSpeed = (animal: AnimalStats) => {
     const speed = animal.speed / 10;
