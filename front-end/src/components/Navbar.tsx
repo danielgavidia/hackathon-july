@@ -28,7 +28,7 @@ const Navbar: React.FC<NavbarProps> = ({ onStartRace, onNewGameData }) => {
                 "https://infinity-ai.fly.dev/generate"
             );
             console.log(response);
-            const options = response.data.map((x) => x.name);
+            const options = response.data.map((x: { name: string }) => x.name);
             onNewGameData(response);
             setOptions(options);
         } catch (error) {
@@ -57,7 +57,7 @@ const Navbar: React.FC<NavbarProps> = ({ onStartRace, onNewGameData }) => {
                 </button>
                 <div className="balance">Balance</div>
                 <div className="balance-amount">$100</div>
-                <div>Choose racer</div>
+                <div className="choose-racer">Choose racer</div>
                 <Dropdown options={options} onSelect={handleSetSelection} />
                 <div className="betting">Bet Amount:</div>
                 <form>

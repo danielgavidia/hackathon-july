@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../styles/dropdown.css";
 
 interface DropdownProps {
     options: string[];
@@ -15,18 +16,16 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
     };
 
     return (
-        <div>
-            <select value={selected} onChange={handleChange}>
-                <option value="" disabled>
-                    Select an option
+        <select value={selected} onChange={handleChange} className="dropdown">
+            <option value="" disabled>
+                Select an option
+            </option>
+            {options.map((option) => (
+                <option key={option} value={option}>
+                    {option}
                 </option>
-                {options.map((option) => (
-                    <option key={option} value={option}>
-                        {option}
-                    </option>
-                ))}
-            </select>
-        </div>
+            ))}
+        </select>
     );
 };
 
