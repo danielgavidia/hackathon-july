@@ -1,6 +1,6 @@
 .navbar {
     font-family: "Jost", sans-serif;
-    height: 60px;
+    height: 40px;
     width: 100%;
     display: flex;
     color: white;
@@ -54,10 +54,6 @@
     margin-right: 10px;
 }
 
-.betting-amount {
-    color: black;
-    height: 25px;
-}
 
 .betting-amount:focus {
     border: none;
