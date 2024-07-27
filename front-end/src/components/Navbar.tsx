@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/navbar.css";
 import axios from "axios";
 import { useState } from "react";
+import Dropdown from "./Dropdown";
 
 interface NavbarProps {
     onStartRace: () => void;
@@ -11,8 +12,15 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ onStartRace, onNewGameData }) => {
     const [betAmount, setBetAmount] = useState<string>("");
     const [bet, setBet] = useState<number | null>(null);
+    const [options, setOptions] = useState<Array<string>>([""]);
+
+    const [selection, setSelection] = useState<string>("");
+    const handleSetSelection = (selectedOption: string) => {
+        setSelection(selectedOption);
+    };
 
     console.log(`bet: ${bet}`);
+    console.log(`selection: ${selection}`);
 
     const handleNewGame = async () => {
         try {
@@ -20,7 +28,9 @@ const Navbar: React.FC<NavbarProps> = ({ onStartRace, onNewGameData }) => {
                 "https://infinity-ai.fly.dev/generate"
             );
             console.log(response);
+            const options = response.data.map((x) => x.name);
             onNewGameData(response);
+            setOptions(options);
         } catch (error) {
             console.log(error);
         }
@@ -47,7 +57,9 @@ const Navbar: React.FC<NavbarProps> = ({ onStartRace, onNewGameData }) => {
                 </button>
                 <div className="balance">Balance</div>
                 <div className="balance-amount">$100</div>
-                <div className="betting">Bet:</div>
+                <div>Choose racer</div>
+                <Dropdown options={options} onSelect={handleSetSelection} />
+                <div className="betting">Bet Amount:</div>
                 <form>
                     <input
                         className="betting-amount"
