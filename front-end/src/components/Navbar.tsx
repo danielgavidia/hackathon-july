@@ -10,7 +10,7 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onStartRace, onNewGameData }) => {
-    const [betAmount, setBetAmount] = useState<string>("");
+    const [betAmount, setBetAmount] = useState<string>("10");
     const [bet, setBet] = useState<number | null>(null);
     const [options, setOptions] = useState<Array<string>>([""]);
 
@@ -50,7 +50,7 @@ const Navbar: React.FC<NavbarProps> = ({ onStartRace, onNewGameData }) => {
 
     return (
         <div className="navbar">
-            <div className="title">Racing Application</div>
+            <div className="title">The Amazing Race</div>
             <div className="functionality">
                 <button className="new-game" onClick={() => handleNewGame()}>
                     New Game

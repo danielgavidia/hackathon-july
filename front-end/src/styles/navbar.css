@@ -1,6 +1,6 @@
 .navbar {
     font-family: "Jost", sans-serif;
-    height: 40px;
+    height: 60px;
     width: 100%;
     display: flex;
     color: white;
@@ -13,6 +13,8 @@
     flex-grow: 1;
     /* width: 200px; */
     padding: 5px;
+    font-size: 20px;
+    margin-left: 20px;
 }
 
 .functionality {
@@ -22,6 +24,7 @@
     color: white;
     justify-content: end;
     align-items: center;
+    margin-right: 15px;
 }
 
 .new-game,
@@ -57,7 +60,7 @@
 }
 
 .betting-amount:focus {
-    border: none;
+    border: 1px solid white;
     box-shadow: none;
     outline: none;
 }
