@@ -1,3 +1,8 @@
 .chat {
+    font-family: "Jost", sans-serif;
     background-color: brown;
+}
+
+.chat-box {
+    background-color: bisque;
 }
