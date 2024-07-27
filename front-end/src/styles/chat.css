@@ -3,9 +3,10 @@
     background-color: black;
 }
 
-.title {
+.chat-title {
     color: white;
     margin-left: 20px;
+    padding: 5px;
 }
 
 .chat-box {

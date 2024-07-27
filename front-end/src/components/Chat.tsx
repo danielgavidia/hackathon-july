@@ -14,11 +14,9 @@ const Chat = () => {
     ]);
     const endChatRef = useRef<HTMLDivElement>(null);
 
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPrompt(e.target.value);
-  };
-
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setPrompt(e.target.value);
+    };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -49,7 +47,7 @@ const Chat = () => {
 
     return (
         <div className="chat">
-            <div className="title">Get a hint on the race</div>
+            <div className="chat-title">Get a hint on the race</div>
             <div className="chat-box">
                 <div className="chat-box-output">
                     {chat.map((x) => {
