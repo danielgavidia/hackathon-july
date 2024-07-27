@@ -14,9 +14,11 @@ const Chat = () => {
     ]);
     const endChatRef = useRef<HTMLDivElement>(null);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPrompt(e.target.value);
-    };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPrompt(e.target.value);
+  };
+
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();

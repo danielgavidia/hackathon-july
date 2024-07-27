@@ -1,6 +1,10 @@
+// src/components/Navbar.tsx
+
+import React from "react";
 import "../styles/navbar.css";
 import axios from "axios";
 import { useState } from "react";
+
 
 const Navbar = () => {
     const [betInput, setBetInput] = useState<number | string>(0);
