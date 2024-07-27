@@ -1,34 +1,28 @@
+/* RaceComponent.css */
 .race-track {
   position: relative;
   width: 100%;
-  height: 300px; /* Adjust height as needed */
-  background: lightgray;
-  border: 1px solid #000;
-  box-sizing: border-box;
+  height: 400px;
+  background-color: #f0f0f0;
 }
 
 .animal-track {
-  position: absolute;
-  width: 100%;
+  position: relative;
   height: 25%;
-  background: rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid #000;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  padding-left: 10px; /* Added padding to align animals better */
+  width: 100%;
 }
+
 .animal {
-  font-size: 64px; /* Adjust size as needed */
   position: absolute;
-  bottom: 10px; /* Adjust this value to move the animal lower */
-  transition: left 0.5s ease-in-out; /* Smooth animation */
+  transition: left 0.1s linear;
 }
 
 .winner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: 24px;
   font-weight: bold;
-  color: green;
-  margin-top: 20px;
-  text-align: center; /* Center winner text */
+  color: #4CAF50;
 }
