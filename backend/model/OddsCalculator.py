@@ -18,8 +18,16 @@ class BayesianOddsCalculator:
         self.posteriors = {animal: self.priors[animal] / total for animal in self.priors}
         return self.posteriors
 
+
     def calculate_odds(self):
-        odds = {animal: 1 / prob for animal, prob in self.posteriors.items()}
+        def decimal_to_fraction(decimal_odds):
+            if decimal_odds == 0:
+                return "0/1"  # Avoid division by zero
+            numerator = decimal_odds - 1
+            # Convert to integer fraction
+            return numerator
+        
+        odds = {animal: decimal_to_fraction(1 / prob) for animal, prob in self.posteriors.items() if prob > 0}
         return odds
 
 
