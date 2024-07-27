@@ -1,25 +1,57 @@
 .navbar {
-    background-color: beige;
     font-family: "Jost", sans-serif;
     height: 60px;
     width: 100%;
     display: flex;
+    color: white;
+    background-color: black;
+    justify-content: space-between;
+}
+
+.title {
+    /* flex-grow: 1; */
+    width: 200px;
+    padding: 5px;
+}
+
+.functionality {
+    /* flex-grow: 1; */
+    width: 700px;
+    display: flex;
+    color: white;
 }
 
 .balance {
-    border: 1px solid black;
-    flex-grow: 1;
+    width: 100px;
+    border: solid 1px white;
     padding: 5px;
+    color: white;
 }
 
 .balance-amount {
-    border: 1px solid black;
-    flex-grow: 1;
+    width: 100px;
+    border: solid 1px white;
     padding: 5px;
+    color: white;
+}
+
+.betting {
+    width: 100px;
+    border: solid 1px white;
+    padding: 5px;
+    color: white;
+}
+
+.betting-amount {
+    width: 100px;
+    border: solid 1px white;
+    padding: 5px;
+    color: white;
 }
 
 .race-start {
-    border: 1px solid black;
-    flex-grow: 1;
+    width: 100px;
+    border: solid 1px white;
     padding: 5px;
+    color: white;
 }
