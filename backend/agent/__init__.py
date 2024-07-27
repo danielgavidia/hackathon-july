@@ -1,2 +1,2 @@
-from backend.agent.generate_animals import animal_generator_chain
+from backend.agent.generate_animals import generator_animals_chain
 from backend.agent.generate_racer import generate_racer_chain
