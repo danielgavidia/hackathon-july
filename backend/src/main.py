@@ -74,6 +74,7 @@ For example:
 Just output this kind of JSON data
 """
 
+
 app = FastAPI()
 # allow cors
 app.add_middleware(
