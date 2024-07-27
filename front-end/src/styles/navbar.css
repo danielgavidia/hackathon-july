@@ -52,11 +52,15 @@
     color: white;
     display: flex;
     margin-right: 10px;
+    height: 25px;
 }
-
 
 .betting-amount:focus {
     border: none;
     box-shadow: none;
     outline: none;
+}
+
+.betting-amount {
+    color: black;
 }
