@@ -5,30 +5,21 @@ import openai
 import os
 import json
 import dotenv
+from model.Animal import Animal
+from model.OddsCalculator import run_race_and_calculate_odds
 
-dotenv.load_dotenv(r"C:\Users\yannick.gibson\projects\others\_challenges\ai_infinity_hackathon\github\backend\api\.env")
+dotenv.load_dotenv(r"C:\Users\yannick.gibson\projects\others\_challenges\ai_infinity_hackathon\github\backend\.env")
+dotenv.load_dotenv()
 
 MODEL_VERSION = "gpt-3.5-turbo"
-GENERATE_PROMPT = """class Animal:
-    def init(self, name, speed, strength, endurance, agility, acceleration, reaction_time, stamina, recovery, focus, consistency, experience):
-        self.name = str(name)
-        self.speed = float(speed)
-        self.strength = float(strength)
-        self.endurance = float(endurance)
-        self.agility = float(agility)
-        self.acceleration = float(acceleration)
-        self.reaction_time = float(reaction_time)
-        self.stamina = float(stamina)
-        self.recovery = float(recovery)
-        self.focus = float(focus)
-        self.consistency = float(consistency)
-        self.experience = float(experience)
-
+SYSTEM_PROMPT_MESSAGE = "You are an all-knowing race betting assistant. Based on the data below, you will interact with a player who will ask you questions about the animals. You will give them helpful and specific answers. Use percentages and odds while answering, but never communicate the exact attributes directly. However, you must make references to the name of the animal in each answer. Be as helpful as possible for the player. Always answer concisely and never use bullet points."
+GENERATE_PROMPT = """
 Generate 4 animals and fill in their attributes realistically. Just give me the example JSON output
 For example:
 [
     {
         "name": "Cheetah",
+        "emoji": "🐆",
         "speed": 95.23,
         "strength": 78.56,
         "endurance": 45.82,
@@ -43,6 +34,7 @@ For example:
     },
     {
         "name": "Elephant",
+        "emoji": "🐘",
         "speed": 30.75,
         "strength": 92.43,
         "endurance": 75.96,
@@ -54,20 +46,6 @@ For example:
         "focus": 70.22,
         "consistency": 68.14,
         "experience": 80.55
-    },
-    {
-        "name": "Falcon",
-        "speed": 120.56,
-        "strength": 65.72,
-        "endurance": 60.24,
-        "agility": 98.75,
-        "acceleration": 95.11,
-        "reaction_time": 18.95,
-        "stamina": 58.21,
-        "recovery": 71.48,
-        "focus": 90.88,
-        "consistency": 82.43,
-        "experience": 70.89
     }
 ]
 
@@ -86,27 +64,44 @@ app.add_middleware(
 
 
 # create an openai client
-client = None
 messages = []
 OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
+client = None
 
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
 
 @app.get("/generate")
-def generate_race():
+def generate():
     global client
     client = openai.Client(api_key=OPENAI_API_KEY)
-    messages = [
-        {"role": "system", "content": ""},
-        {"role": "user", "content": GENERATE_PROMPT}
-        ]
+    global messages
+    messages.apppend({"role": "system", "content": SYSTEM_PROMPT_MESSAGE})
+    messages.append({"role": "user", "content": GENERATE_PROMPT})
     response = client.chat.completions.create(
     model=MODEL_VERSION,
     messages=messages
     )
-    json_data = json.loads(response.choices[0].message.content)
+    json_string = response.choices[0].message.content
+    json_data = json.loads(json_string)
+
+    # Prepare data
+    animals = []
+    performance_scores: dict[Animal, float] = {}
+    for json_animal in json_data:
+        animal = Animal(**json_animal)
+        animals.append(animal)
+        performance_scores[animal] = animal.calculate_performance_score()
+
+    odds = run_race_and_calculate_odds(animals, performance_scores)
+    # Format data
+    for i, json_animal in enumerate(json_data):
+        json_animal["performance_score"] = performance_scores[animals[i]]
+        json_animal["odds"] = odds[animals[i]]
+
+    messages.append({"role": "assistant", "content": json_string})
+
     return json_data
 
 @app.get("/prompt/{prompt}")
@@ -115,9 +110,13 @@ def prompt_gpt(prompt: str):
         return "Client not initialized"
     else:
         global messages
+        messages.append({"role": "system", "content": ""})
         messages.append({"role": "user", "content": prompt})
         response = client.chat.completions.create(
             model=MODEL_VERSION,
             messages=messages
         )
-        return response.choices[0].message
+        gpt_response = response.choices[0].message
+
+        messages.append({"role": "assistant", "content": gpt_response})
+        return gpt_response 
