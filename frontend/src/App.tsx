@@ -1,35 +1,80 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.tsx
 
-function App() {
-  const [count, setCount] = useState(0)
+import "./app.css";
+import React, { useState, useEffect } from "react";
+import Chat from "./components/Chat";
+import RaceComponent from "./components/RaceComponent";
+import Navbar from "./components/Navbar";
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+interface AnimalStats {
+  name: string;
+  emoji: string;
+  speed: number;
+  strength: number;
+  endurance: number;
+  agility: number;
+  acceleration: number;
+  reaction_time: number;
+  stamina: number;
+  recovery: number;
+  focus: number;
+  consistency: number;
+  experience: number;
 }
 
-export default App
+const App: React.FC = () => {
+  const [startRace, setStartRace] = useState(false);
+  const [animals, setAnimals] = useState<AnimalStats[]>([]);
+
+  const handleStartRace = () => {
+    console.log("Start race button clicked");
+    setStartRace(true);
+  };
+
+  const handleNewGameData = (response: any) => {
+    const animalsArray = response.data || [];
+    if (Array.isArray(animalsArray)) {
+      const newAnimals: AnimalStats[] = animalsArray.map((animal: any) => ({
+        name: animal.name,
+        emoji: animal.emoji,
+        speed: animal.speed,
+        strength: animal.strength,
+        endurance: animal.endurance,
+        agility: animal.agility,
+        acceleration: animal.acceleration,
+        reaction_time: animal.reaction_time,
+        stamina: animal.stamina,
+        recovery: animal.recovery,
+        focus: animal.focus,
+        consistency: animal.consistency,
+        experience: animal.experience,
+      }));
+
+      setAnimals(newAnimals);
+      setStartRace(false); // Reset startRace when new animals are generated
+    } else {
+      console.error("Expected an array but received:", animalsArray);
+    }
+  };
+
+  useEffect(() => {
+    console.log("App: startRace changed to", startRace);
+    console.log("App: animals", animals);
+  }, [startRace, animals]);
+
+  const maxDistance = 100; // Example max distance
+
+  return (
+    <div className="App">
+      <Navbar onStartRace={handleStartRace} onNewGameData={handleNewGameData} />
+      <RaceComponent
+        animals={animals}
+        startRace={startRace}
+        maxDistance={maxDistance}
+      />
+      <Chat />
+    </div>
+  );
+};
+
+export default App;
