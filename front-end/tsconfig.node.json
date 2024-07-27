@@ -10,9 +10,5 @@
         "noEmit": true,
         "types": ["node"]
     },
-    "include": [
-        "vite.config.ts",
-        "src/**/*", // Include all TypeScript files in the src directory
-        "types/**/*"
-    ]
+    "include": ["vite.config.ts", "src/**/*", "types/**/*"]
 }
