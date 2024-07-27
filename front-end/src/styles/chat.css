@@ -8,7 +8,7 @@
     border: 1px solid black;
     margin-left: 20px;
     margin-right: 20px;
-    height: 300px;
+    height: 400px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -16,13 +16,15 @@
 
 .chat-box-output {
     border: 1px solid black;
-    flex-grow: 4;
+    height: 300px;
     padding: 10px;
+    justify-content: baseline;
     overflow: scroll;
+    overflow-y: auto;
 }
 
 .chat-box-input {
-    flex-grow: 1;
+    height: 100px;
     background-color: gray;
     position: relative;
     display: flex;
