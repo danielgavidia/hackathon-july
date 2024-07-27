@@ -1,6 +1,8 @@
+import "../styles/navbar.css";
+
 const Navbar = () => {
     return (
-        <div>
+        <div className="navbar">
             <div>Racing Application</div>
         </div>
     );
