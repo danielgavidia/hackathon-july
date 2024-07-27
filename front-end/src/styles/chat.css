@@ -1,3 +1,40 @@
 .chat {
+    font-family: "Jost", sans-serif;
     background-color: brown;
+}
+
+.chat-box {
+    background-color: bisque;
+    border: 1px solid black;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 200px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-box-output {
+    border: 1px solid black;
+    flex-grow: 4;
+    padding: 10px;
+}
+
+.chat-box-input {
+    flex-grow: 1;
+    background-color: gray;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-box-input-form {
+    background-color: #2f2f2f;
+    border-radius: 5px;
+    width: 98%;
+    height: 90%;
+    color: white;
+    padding: 10px;
+    /* justify-content: center; */
 }
