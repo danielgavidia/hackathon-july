@@ -47,7 +47,7 @@ const Chat = () => {
 
     return (
         <div className="chat">
-            <div>Ask about the horses</div>
+            <div className="title">Get a hint on the race</div>
             <div className="chat-box">
                 <div className="chat-box-output">
                     {chat.map((x) => {
@@ -76,7 +76,6 @@ const Chat = () => {
                         type="text"
                         onChange={handleChange}
                     />
-                    <button type="submit">Submit</button>
                 </form>
             </div>
         </div>
