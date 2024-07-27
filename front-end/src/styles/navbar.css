@@ -22,6 +22,18 @@
     justify-content: end;
 }
 
+.new-game {
+    width: 100px;
+    border: solid 1px white;
+    padding: 5px;
+    color: white;
+    background-color: black;
+}
+
+.new-game:hover {
+    background-color: aqua;
+}
+
 .balance {
     width: 100px;
     border: solid 1px white;
