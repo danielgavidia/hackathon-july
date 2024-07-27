@@ -6,6 +6,7 @@
     color: white;
     background-color: black;
     justify-content: space-between;
+    align-items: center;
 }
 
 .title {
@@ -20,52 +21,42 @@
     display: flex;
     color: white;
     justify-content: end;
+    align-items: center;
 }
 
-.new-game {
-    width: 100px;
-    border: solid 1px white;
-    padding: 5px;
-    color: white;
-    background-color: black;
-}
-
-.new-game:hover {
-    background-color: aqua;
-}
-
-.balance {
-    width: 100px;
-    border: solid 1px white;
-    padding: 5px;
-    color: white;
-}
-
-.balance-amount {
-    width: 100px;
-    border: solid 1px white;
-    padding: 5px;
-    color: white;
-}
-
-.betting {
-    width: 100px;
-    border: solid 1px white;
-    padding: 5px;
-    color: white;
-}
-
-.betting-amount {
-    width: 100px;
-    border: solid 1px white;
-    padding: 5px;
-    color: white;
-}
-
+.new-game,
 .race-start {
     width: 100px;
-    border: solid 1px white;
     padding: 5px;
-    color: black;
-    font-weight: bold;
+    color: white;
+    background-color: purple;
+    box-shadow: none;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.new-game:hover,
+.race-start:hover {
+    background-color: blueviolet;
+}
+
+.balance,
+.balance-amount,
+.betting,
+.betting-amount {
+    border: 1px solid white;
+    width: 100px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    display: flex;
+    margin-right: 10px;
+}
+
+
+.betting-amount:focus {
+    border: none;
+    box-shadow: none;
+    outline: none;
 }
