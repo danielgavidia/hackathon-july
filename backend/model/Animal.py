@@ -3,19 +3,19 @@ import random
 
 class Animal:
     def __init__(self, name, speed, strength, endurance, agility, acceleration, reaction_time, stamina, recovery, focus, consistency, experience):
-        self.name = name
-        self.speed = speed
-        self.strength = strength
-        self.endurance = endurance
-        self.agility = agility
-        self.acceleration = acceleration
-        self.reaction_time = reaction_time
-        self.stamina = stamina
-        self.recovery = recovery
-        self.focus = focus
-        self.consistency = consistency
-        self.experience = experience
-        self.performance_score = self.calculate_performance_score()
+        self.name = str(name)
+        self.speed = float(speed)
+        self.strength = float(strength)
+        self.endurance = float(endurance)
+        self.agility = float(agility)
+        self.acceleration = float(acceleration)
+        self.reaction_time = float(reaction_time)
+        self.stamina = float(stamina)
+        self.recovery = float(recovery)
+        self.focus = float(focus)
+        self.consistency = float(consistency)
+        self.experience = float(experience)
+        self.performance_score = self.calcuslate_performance_score()
 
     def calculate_performance_score(self):
         weights = {
