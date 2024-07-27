@@ -12,7 +12,7 @@ dotenv.load_dotenv(r"C:\Users\yannick.gibson\projects\others\_challenges\ai_infi
 dotenv.load_dotenv()
 
 MODEL_VERSION = "gpt-3.5-turbo"
-SYSTEM_PROMPT_MESSAGE = "You are an all-knowing race betting assistant. Based on the data below, you will interact with a player who will ask you questions about the animals. You will give them helpful and specific answers. Use percentages and odds while answering, but never communicate the exact attributes directly. However, you must make references to the name of the animal in each answer. Be as helpful as possible for the player. Always answer concisely and never use bullet points."
+SYSTEM_PROMPT_MESSAGE = "You are an all-knowing race betting assistant. Based on the data you generated earlier, you will interact with a player who will ask you questions about the animals. You will give them helpful and specific answers. Use percentages and odds while answering, communicate the exact attributes directly only if asked. The units of the animal attributes are points. Never disclose the performance score. However, you must make references to the name of the animal in each answer. Be as helpful as possible for the player. Always answer very concisely and never use bullet points."
 GENERATE_PROMPT = """
 Generate 4 animals and fill in their attributes realistically. Just give me the example JSON output
 For example:
@@ -77,11 +77,12 @@ def generate():
     global client
     client = openai.Client(api_key=OPENAI_API_KEY)
     global messages
-    messages.apppend({"role": "system", "content": SYSTEM_PROMPT_MESSAGE})
+    messages = []
+    #messages.apppend({"role": "system", "content": ""})
     messages.append({"role": "user", "content": GENERATE_PROMPT})
     response = client.chat.completions.create(
-    model=MODEL_VERSION,
-    messages=messages
+        model=MODEL_VERSION,
+        messages=messages
     )
     json_string = response.choices[0].message.content
     json_data = json.loads(json_string)
@@ -110,13 +111,14 @@ def prompt_gpt(prompt: str):
         return "Client not initialized"
     else:
         global messages
-        messages.append({"role": "system", "content": ""})
-        messages.append({"role": "user", "content": prompt})
+        #messages.append({"role": "system", "content": SYSTEM_PROMPT_MESSAGE})
+        messages.append({"role": "user", "content": SYSTEM_PROMPT_MESSAGE + "\n\n" + prompt})
         response = client.chat.completions.create(
             model=MODEL_VERSION,
             messages=messages
         )
         gpt_response = response.choices[0].message
+        gpt_response_string = gpt_response.content
 
-        messages.append({"role": "assistant", "content": gpt_response})
+        messages.append({"role": "assistant", "content": gpt_response_string})
         return gpt_response 
