@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 langchain-openai
 langchain-core
 python-dotenv
+=======
+# python 3.12.4
+>>>>>>> adfe2f0527e1dd7fe8ff7f15c3bf35fef5b0584b
 fastapi
 uvicorn[standard]
 openai
