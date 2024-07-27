@@ -9,7 +9,7 @@ LLM_MODEL= os.getenv("LLM_MODEL")
 
 
 class Racer(BaseModel):
-    speices: str = Field(description="The speices the racer is")
+    species: str = Field(description="The species the racer is")
     emoji: str = Field(description="The emoji to represnt them")
     speed: float = Field(description="a scalar value the represents their speed")
     speed: float = Field(description="a scalar value the represents their speed")
