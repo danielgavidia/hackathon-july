@@ -17,8 +17,8 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
 
     return (
         <select value={selected} onChange={handleChange} className="dropdown">
-            <option value="" disabled>
-                Select an option
+            <option value="" disabled className="dropdown-default">
+                Select
             </option>
             {options.map((option) => (
                 <option key={option} value={option}>
