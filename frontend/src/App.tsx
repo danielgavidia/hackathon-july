@@ -54,6 +54,7 @@ const App: React.FC = () => {
                 })
             );
 
+<<<<<<< HEAD:front-end/src/App.tsx
             console.log("New animals generated:", newAnimals);
             setAnimals(newAnimals);
             setStartRace(false); // Reset race when new animals are generated
@@ -83,6 +84,34 @@ const App: React.FC = () => {
             <Chat />
         </div>
     );
+=======
+      console.log("New animals generated:", newAnimals);
+      setAnimals(newAnimals);
+      setStartRace(false); // Reset race when new animals are generated
+    } else {
+      console.error("Expected an array but received:", animalsArray);
+    }
+  };
+
+  const maxDistance = 100; // Example max distance
+
+  useEffect(() => {
+    console.log("App: startRace changed to", startRace);
+    console.log("App: animals", animals);
+  }, [startRace, animals]);
+
+  return (
+    <div className="App">
+      <Navbar onStartRace={handleStartRace} onNewGameData={handleNewGameData} />
+      <RaceComponent
+        animals={animals}
+        startRace={startRace}
+        maxDistance={maxDistance}
+      />
+      <Chat />
+    </div>
+  );
+>>>>>>> attempt-to-merge-back-and-front:frontend/src/App.tsx
 };
 
 export default App;
