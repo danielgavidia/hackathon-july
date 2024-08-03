@@ -2,10 +2,19 @@
 .race-track {
     position: relative;
     width: 100%;
+<<<<<<< HEAD:front-end/src/styles/race-component.css
+    height: 200px;
+    /* top: 60px; */
+    background-color: black;
+    color: white;
+    font-family: "Jost", sans-serif;
+    margin-top: 20px;
+=======
     height: 400px;
     background-color: black;
     color: white;
     font-family: "Jost", sans-serif;
+>>>>>>> attempt-to-merge-back-and-front:frontend/src/styles/race-component.css
 }
 
 .animal-track {
@@ -16,7 +25,11 @@
 }
 
 .animal {
+<<<<<<< HEAD:front-end/src/styles/race-component.css
+    position: relative;
+=======
     position: absolute;
+>>>>>>> attempt-to-merge-back-and-front:frontend/src/styles/race-component.css
     transition: left 0.1s linear;
 }
 

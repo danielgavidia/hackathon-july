@@ -3,15 +3,16 @@
     background-color: black;
 }
 
-.title {
+.chat-title {
     color: white;
     margin-left: 20px;
+    padding: 5px;
 }
 
 .chat-box {
     margin-left: 20px;
     margin-right: 20px;
-    height: 350px;
+    height: 250px;
     border-radius: 5px;
     border: 1px solid white;
     display: flex;
@@ -20,7 +21,7 @@
 
 .chat-box-output {
     background-color: #2f2f2f;
-    height: 300px;
+    height: 200px;
     padding: 10px;
     border-radius: 5px;
     justify-content: baseline;
