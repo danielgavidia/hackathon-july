@@ -1,5 +1,3 @@
-// src/App.tsx
-
 import "./app.css";
 import React, { useState, useEffect } from "react";
 import Chat from "./components/Chat";
@@ -50,19 +48,20 @@ const App: React.FC = () => {
         experience: animal.experience,
       }));
 
+      console.log("New animals generated:", newAnimals);
       setAnimals(newAnimals);
-      setStartRace(false); // Reset startRace when new animals are generated
+      setStartRace(false); // Reset race when new animals are generated
     } else {
       console.error("Expected an array but received:", animalsArray);
     }
   };
 
+  const maxDistance = 100; // Example max distance
+
   useEffect(() => {
     console.log("App: startRace changed to", startRace);
     console.log("App: animals", animals);
   }, [startRace, animals]);
-
-  const maxDistance = 100; // Example max distance
 
   return (
     <div className="App">
